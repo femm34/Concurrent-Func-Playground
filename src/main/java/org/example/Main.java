@@ -41,12 +41,41 @@ public class Main {
 
 //        threadThree.start();
 
-        Thread threadOne = new Thread(new ConcurrencyTen());
-        Thread threadTwo = new Thread(new ConcurrencyTen());
-        Thread threadThree = new Thread(new ConcurrencyTen());
+//        Thread threadOne = new Thread(new ConcurrencyTen());
+//        Thread threadTwo = new Thread(new ConcurrencyTen());
+//        Thread threadThree = new Thread(new ConcurrencyTen());
+
+//        threadOne.start();
+//        threadTwo.start();
+//        threadThree.start();
+
+
+        Thread threadOne = new Thread(new ConcurrencyFive());
+        Thread threadTwo = new Thread(new ConcurrencyFive());
+        Thread threadThree = new Thread(new ConcurrencyFive());
+
+        System.out.println(threadOne.getName() + " - Estado inicial: " + threadOne.getState());
+        System.out.println(threadTwo.getName() + " - Estado inicial: " + threadTwo.getState());
+        System.out.println(threadThree.getName() + " - Estado inicial: " + threadThree.getState());
 
         threadOne.start();
         threadTwo.start();
         threadThree.start();
+
+        System.out.println(threadOne.getName() + " - Estado después de iniciar: " + threadOne.getState());
+        System.out.println(threadTwo.getName() + " - Estado después de iniciar: " + threadTwo.getState());
+        System.out.println(threadThree.getName() + " - Estado después de iniciar: " + threadThree.getState());
+
+        try {
+            threadOne.join();
+            threadTwo.join();
+            threadThree.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(threadOne.getName() + " - Estado final: " + threadOne.getState());
+        System.out.println(threadTwo.getName() + " - Estado final: " + threadTwo.getState());
+        System.out.println(threadThree.getName() + " - Estado final: " + threadThree.getState());
+
     }
 }
