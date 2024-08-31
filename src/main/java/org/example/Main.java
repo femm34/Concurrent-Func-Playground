@@ -50,32 +50,58 @@ public class Main {
 //        threadThree.start();
 
 
-        Thread threadOne = new Thread(new ConcurrencyFive());
-        Thread threadTwo = new Thread(new ConcurrencyFive());
-        Thread threadThree = new Thread(new ConcurrencyFive());
+//        Thread threadOne = new Thread(new ConcurrencyFive());
+//        Thread threadTwo = new Thread(new ConcurrencyFive());
+//        Thread threadThree = new Thread(new ConcurrencyFive());
+//
+//        System.out.println(threadOne.getName() + " - Estado inicial: " + threadOne.getState());
+//        System.out.println(threadTwo.getName() + " - Estado inicial: " + threadTwo.getState());
+//        System.out.println(threadThree.getName() + " - Estado inicial: " + threadThree.getState());
+//
+//        threadOne.start();
+//        threadTwo.start();
+//        threadThree.start();
+//
+//        System.out.println(threadOne.getName() + " - Estado después de iniciar: " + threadOne.getState());
+//        System.out.println(threadTwo.getName() + " - Estado después de iniciar: " + threadTwo.getState());
+//        System.out.println(threadThree.getName() + " - Estado después de iniciar: " + threadThree.getState());
+//
+//        try {
+//            threadOne.join();
+//            threadTwo.join();
+//            threadThree.join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println(threadOne.getName() + " - Estado final: " + threadOne.getState());
+//        System.out.println(threadTwo.getName() + " - Estado final: " + threadTwo.getState());
+//        System.out.println(threadThree.getName() + " - Estado final: " + threadThree.getState());
 
-        System.out.println(threadOne.getName() + " - Estado inicial: " + threadOne.getState());
-        System.out.println(threadTwo.getName() + " - Estado inicial: " + threadTwo.getState());
-        System.out.println(threadThree.getName() + " - Estado inicial: " + threadThree.getState());
 
-        threadOne.start();
-        threadTwo.start();
-        threadThree.start();
 
-        System.out.println(threadOne.getName() + " - Estado después de iniciar: " + threadOne.getState());
-        System.out.println(threadTwo.getName() + " - Estado después de iniciar: " + threadTwo.getState());
-        System.out.println(threadThree.getName() + " - Estado después de iniciar: " + threadThree.getState());
+        Thread sumThread = new Thread(new Sum());
+        Factorial factorial = new Factorial(5);
 
-        try {
-            threadOne.join();
-            threadTwo.join();
-            threadThree.join();
-        } catch (InterruptedException e) {
+        sumThread.start();
+        factorial.start();
+
+        try{
+            Thread.sleep(1000);
+
+        }catch (InterruptedException e){
             e.printStackTrace();
         }
-        System.out.println(threadOne.getName() + " - Estado final: " + threadOne.getState());
-        System.out.println(threadTwo.getName() + " - Estado final: " + threadTwo.getState());
-        System.out.println(threadThree.getName() + " - Estado final: " + threadThree.getState());
+
+        sumThread.interrupt();
+
+        try{
+            sumThread.join();
+            factorial.join();
+        }
+        catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
 
     }
 }
