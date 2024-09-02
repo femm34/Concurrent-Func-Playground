@@ -1,4 +1,8 @@
 package org.example;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 public class Main {
     public static void main(String[] args) {
 //        System.out.println("Threads and functional programming in java");
@@ -77,31 +81,43 @@ public class Main {
 //        System.out.println(threadTwo.getName() + " - Estado final: " + threadTwo.getState());
 //        System.out.println(threadThree.getName() + " - Estado final: " + threadThree.getState());
 
+//        int a[]= {1,2,3,4};
+//        System.out.println(a instanceof Object);
+//
+//        Thread sumThread = new Thread(new Sum());
+//        Factorial factorial = new Factorial(5);
+//
+//        sumThread.start();
+//
+//
+//        System.out.println(sumThread.getState());
+//
+//        try{
+//            System.out.println("empieza pausa");
+//            Thread.sleep(20000);
+//            System.out.println("termina pausa");
+//        }catch (InterruptedException e){
+//            e.printStackTrace();
+//        }
+//
+//        sumThread.interrupt();
+//
+//        try{
+//            sumThread.join();
+//            factorial.start();
+//            factorial.join();
+//        }
+//        catch (InterruptedException e){
+//            e.printStackTrace();
+//        }
 
 
-        Thread sumThread = new Thread(new Sum());
-        Factorial factorial = new Factorial(5);
-
-        sumThread.start();
-        factorial.start();
-
-        try{
-            Thread.sleep(1000);
-
-        }catch (InterruptedException e){
-            e.printStackTrace();
+        ExecutorService executor = Executors.newFixedThreadPool(10);
+        for (int i = 0; i < 5; i++) {
+            executor.execute(new Sum());
         }
 
-        sumThread.interrupt();
-
-        try{
-            sumThread.join();
-            factorial.join();
-        }
-        catch (InterruptedException e){
-            e.printStackTrace();
-        }
-
+        executor.shutdown();
 
     }
 }
