@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
@@ -112,12 +113,52 @@ public class Main {
 //        }
 
 
-        ExecutorService executor = Executors.newFixedThreadPool(10);
-        for (int i = 0; i < 5; i++) {
-            executor.execute(new Sum());
-        }
+//        ExecutorService executor = Executors.newCachedThreadPool();
+//        for (int i = 0; i < 5; i++) {
+//            executor.execute(new mapEx());
+//        }
+//
+//        executor.shutdown();
+//        try {
+//            // Esperar a que todos los hilos terminen
+//            if (!executor.awaitTermination(3, TimeUnit.SECONDS)) {
+//                executor.shutdownNow();
+//            }
+//        } catch (InterruptedException e) {
+//            executor.shutdownNow();
+//            Thread.currentThread().interrupt();
+//        }
 
-        executor.shutdown();
+//        ExecutorService executorService = Executors.newCachedThreadPool();
+//        for (int i = 0; i < 10; i++) {
+//            executorService.execute(new reduceEx());
+//        }
+//        executorService.shutdown();
+
+//        ExecutorService executorService = Executors.newCachedThreadPool();
+//        executorService.execute(new dobles());
+//        executorService.shutdown();
+//        SumCalculator cal = (x,y) -> x + y;
+//        var result = cal.sum(45,5);
+//        System.out.println(result);
+
+//          isEmptyString verify = (s)-> s.isEmpty();
+//            var result = verify.isEmptysss("asd");
+//        System.out.println(result);
+
+//        ExecutorService executorService = Executors.newCachedThreadPool();
+//        executorService.execute(new Multiply());
+//        executorService.shutdown();
+
+//        Thread convertString = new Thread(new ConvertString());
+//        convertString.start();
+
+        EvenOdd even = n-> n % 2 ==0;
+
+        var result = even.filterEvenOdd(3);
+        System.out.println(result);
+
+
 
     }
 }
