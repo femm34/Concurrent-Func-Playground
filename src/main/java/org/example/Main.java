@@ -1,8 +1,10 @@
 package org.example;
 
+import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
@@ -153,12 +155,27 @@ public class Main {
 //        Thread convertString = new Thread(new ConvertString());
 //        convertString.start();
 
-        EvenOdd even = n-> n % 2 ==0;
+//        EvenOdd even = n-> n % 2 ==0;
+//
+//        var result = even.filterEvenOdd(3);
+//        System.out.println(result);
 
-        var result = even.filterEvenOdd(3);
-        System.out.println(result);
+//        Predicate<Integer> lesserThanTen = (n)-> n < 10;
+//        System.out.println(lesserThanTen.test(10));
 
+//            FerPredicate lessThanTen = number -> number < 10;
+//            System.out.println(lessThanTen.test(15));
 
+//        HashMap<String, Integer> data = new HashMap<>();
+//        data.put("Fernando", 20);
+//        data.put("Elia Sandra", 19);
+//        data.put("Carlos Montiel",28);
+
+//        System.out.println(String.format("La edad de Fernando es %", data.get("Fernando")));
+//        System.out.println(data);
+//        for(var si : data.entrySet()){
+//            System.out.println(si.getKey());
+//        }
 
     }
 }
