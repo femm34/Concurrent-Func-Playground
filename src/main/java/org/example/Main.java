@@ -176,6 +176,8 @@ public class Main {
 //        for(var si : data.entrySet()){
 //            System.out.println(si.getKey());
 //        }
+        UserRepository userRepository = new mySQLRepository();
+        UserService userService = new UserService(userRepository);
 
     }
 }
