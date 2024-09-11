@@ -1,6 +1,6 @@
 package org.example;
 
-public class UserService {
+public class UserService implements UserRepository {
 
     UserRepository userRepository;
 
@@ -8,7 +8,8 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void getAllUsers(){
+    @Override
+    public void findAllUsers() {
         this.userRepository.findAllUsers();
-    };
+    }
 }

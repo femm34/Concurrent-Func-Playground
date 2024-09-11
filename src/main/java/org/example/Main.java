@@ -1,10 +1,13 @@
 package org.example;
 
+import java.awt.*;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -176,8 +179,48 @@ public class Main {
 //        for(var si : data.entrySet()){
 //            System.out.println(si.getKey());
 //        }
-        UserRepository userRepository = new mySQLRepository();
-        UserService userService = new UserService(userRepository);
+//        UserRepository userRepository = new mySQLRepository();
+//        UserService userService = new UserService(userRepository);
+
+
+//        ProductRepository productRepository = new mySQLRepository();
+//        ProductService productService = new ProductService(productRepository);
+//        productService.findAllProducts();
+
+//        Operation cal = (x,y) -> x + y;
+
+//        var ola = cal.apply(2,4);
+
+
+//        Calc sum = (x,y) -> y + x;
+//        double ola = sum.calc(3,3);
+//        System.out.println(ola+6);
+
+
+//        List<Integer> numeros = List.of(1,2,3,4,5);
+
+//        Cola ola = (a) -> {
+//            if(a.length() <= 0){
+//                return true;
+//            }
+//            return false;
+//        };
+//        boolean result = ola.analize("asdas");
+//        System.out.println(result);
+
+//        Predicate<Integer> lesserThanTen = (n)-> n < 10;
+//        System.out.println(lesserThanTen.test(10));
+
+        List<Integer> numerines = List.of(1,4,2,4,34,3,10);
+        Predicate<Integer> lessThanTen = n -> n < 10;
+
+        List<Integer> yeah= numerines.stream()
+                .filter(lessThanTen.negate())
+                .collect(Collectors.toList());
+
+        yeah.forEach(System.out::println);
+//        System.out.println(yeah);
+
 
     }
 }
