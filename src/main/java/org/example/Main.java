@@ -1,8 +1,10 @@
 package org.example;
 
 import java.awt.*;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -211,15 +213,59 @@ public class Main {
 //        Predicate<Integer> lesserThanTen = (n)-> n < 10;
 //        System.out.println(lesserThanTen.test(10));
 
-        List<Integer> numerines = List.of(1,4,2,4,34,3,10);
-        Predicate<Integer> lessThanTen = n -> n < 10;
-
-        List<Integer> yeah= numerines.stream()
-                .filter(lessThanTen.negate())
-                .collect(Collectors.toList());
-
-        yeah.forEach(System.out::println);
+//        List<Integer> numerines = List.of(1,4,2,4,34,3,10);
+//        Predicate<Integer> lessThanTen = n -> n < 10;
+//
+//        List<Integer> yeah= numerines.stream()
+//                .filter(lessThanTen.negate())
+//                .collect(Collectors.toList());
+//
+//        yeah.forEach(System.out::println);
 //        System.out.println(yeah);
+
+
+//        Predicate<Integer> isEven  = i -> i % 2 == 0;
+//        List<Integer> numerines = List.of(1,2,4,41,12);
+//
+//        Integer sum = numerines.stream()
+//                .filter(isEven)
+//                .reduce(0, Integer::sum);
+//
+//
+//        System.out.println(sum);
+
+
+//        List<String> words = Arrays.asList("java", "functional", "programming");
+//
+//        var upperCaseWords = words.stream()
+//                .map(String::toUpperCase)
+//                .collect(Collectors.toList());
+//
+//        System.out.println(upperCaseWords);
+
+//        Predicate<String> startsWithA = s -> s.charAt(0) == 'a' || s.charAt(0) == 'A';
+//
+//        List<String> names = Arrays.asList("Ana", "Pedro", "Alberto", "Beatriz", "Andrés");
+//        var namesStartWithA = names.stream()
+//                .filter(startsWithA)
+//                .collect(Collectors.toList());
+//        System.out.println(namesStartWithA);
+
+//        List<Integer> numerines = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+//
+//        var sum = numerines.stream()
+//                .max(Integer::compareTo);
+//
+//        sum.ifPresent(System.out::println);
+
+        List<Integer> numbers = Arrays.asList(2, 3, 4, 5);
+
+        var product = numbers.stream()
+                .reduce(1, (accumulator,currentValue)->accumulator*currentValue);
+
+        System.out.println(product);
+
+
 
 
     }
